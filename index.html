@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Crop AI</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Face Crop AI</h1>
+        
+        <div class="controls">
+            <div class="input-group">
+                <label>Cropped Size (px)</label>
+                <input type="number" id="sizeInput" value="600">
+            </div>
+            <div class="input-group">
+                <label>Face Proportion</label>
+                <select id="proportionSelect">
+                    <option value="0.5">1/2 (Balanced)</option>
+                    <option value="0.33">1/3 (Tighter)</option>
+                    <option value="0.75">3/4 (Wider)</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Model Type</label>
+                <select id="modelSelect">
+                    <option value="ssd">SSD Mobilenet (Accurate)</option>
+                    <option value="tiny">Tiny Face (Fast)</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="dropZone" class="drop-zone">
+            <p>Drag & drop photos here or click to upload</p>
+            <input type="file" id="fileInput" accept="image/*" hidden multiple>
+        </div>
+
+        <div id="status" class="status">AI Ready!</div>
+        
+        <div id="resultSection" style="display:none;">
+            <div class="bulk-controls">
+                <button id="downloadAllBtn" class="btn-primary">Download All as ZIP</button>
+                <button id="clearBtn" class="btn-danger">Clear All</button>
+            </div>
+            <div id="previewGallery" class="gallery"></div>
+        </div>
+    </div>
+</body>
+</html>
